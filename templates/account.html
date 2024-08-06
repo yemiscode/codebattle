@@ -2,21 +2,29 @@
 
 {% block content %}
 
-<div class="sesction"><h1>My Account</h1></div>
-
+<div class="sesction">
+    <h1>My Account</h1>
+    <a href="{% url 'edit_account' %}" class="btn btn--warning">Edit</a>
+    <a href="#" class="btn btn--warning">Reset Password</a>
+</div>
+<br>
 
 <div class="sesction">
     <h3>My Event</h3>
     {% for event in user.event.all %}
-<a href="{% url 'event' event.id %}">{{event.name}}</a>
-{% endfor %}
+   <a href="{% url 'event' event.id %}">{{event.name}}</a>
+   {% empty %}
+   <p>You haven't register for any event</p>
+   {% endfor %}
 </div>
-
-<div>
+<br>
+<div class="sesction">
     <h3>My Submissions</h3>
     {% for sub in user.submissions.all %}
-<a href="{% url 'update_submission' sub.id %}">{{sub.event.name}}</a>
-{% endfor %}
+    <a href="{% url 'update_submission' sub.id %}">{{sub.event.name}}</a>
+    {% empty %}
+    <p>You don't have any submission yet</p>
+    {% endfor %}
 </div>
 
 

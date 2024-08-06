@@ -22,7 +22,7 @@
 </section>
 
 <section>
-    <h3>Users</h3>
+    <h3>Users: {{count}}</h3>
     <div class="users--lists section">
     {% for user in users %}
     <a href="{% url 'profile' user.id %}">
