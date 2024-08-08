@@ -3,9 +3,11 @@
 {% block content %}
 
 <div class="sesction">
+    <img class="image-lg" src="{{user.avatar.url}}">
     <h1>My Account</h1>
     <a href="{% url 'edit_account' %}" class="btn btn--warning">Edit</a>
-    <a href="#" class="btn btn--warning">Reset Password</a>
+    <a href="{% url 'change_password' %}" class="btn btn--warning">Reset Password</a>
+    <a href="{% url 'profile' user.id %}" class="btn btn--warning">View Profile</a>
 </div>
 <br>
 

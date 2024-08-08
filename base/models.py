@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django_resized import ResizedImageField
 import uuid
 
 # Create your models here.
@@ -12,11 +13,16 @@ class User(AbstractUser):
     hackathon_participants = models.BooleanField(default=True, null=True) 
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
-    avatar = models.ImageField(default='avatar.jpg')
+    avatar = ResizedImageField(size=[300, 300], crop=['middle', 'center'], default='avatar.jpg')
 
     USERNAME_FIELD = 'email'
-
     REQUIRED_FIELDS = ['username']
+
+    twitter = models.URLField(max_length=500, null=True, blank=True)
+    linkedin = models.URLField(max_length=500, null=True, blank=True)
+    facebook = models.URLField(max_length=500, null=True, blank=True)
+    website = models.URLField(max_length=500, null=True, blank=True)
+    github = models.URLField(max_length=500, null=True, blank=True)
 
 
 class Event(models.Model):

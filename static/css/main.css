@@ -30,6 +30,15 @@
     background-color: steelblue;
     color: white;
 }
+.error {
+    color: #E55D42;
+}
+.success {
+    color: #17b222;
+}
+.info {
+    color: #2434df;
+}
 .container--main {
     width: 100%;
     margin: 0 2em;
@@ -70,6 +79,12 @@ nav a {
     object-fit: cover;
     border-radius: 50%;
 }
+.image-lg {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 .users--lists {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -80,7 +95,10 @@ nav a {
     padding: 1em;
     border-radius: 5px;
 }
-
+.paginator--wrapper {
+    display: flex;
+    flex: wrap;
+}
 
 /* EVENT PAGE STYLE */
 
@@ -88,8 +106,55 @@ nav a {
     display: flex;
     flex-wrap: wrap;
 }
+
+/* LOGIN REGISTRATION STYLE */
+
+.login-register--container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgb(218, 218, 218);
+    padding: 1em;
+    border-radius: 5px;
+}
+.form--field--wrapper {
+    margin: 1em;
+    margin-bottom: 1em;
+}
+input {
+    width: 100%;
+}
+
 @media (max-width:1200px) {
     .container--main {
         width: 100%;
     }
+}
+
+@media (max-width:1200px) {
+    .container--main {
+        width: 100%;
+    }
+}
+
+@media (max-width:800px) {
+    .event--lists {
+        grid-template-columns: 1fr 1fr;   
+    }
+    .users--lists {
+        grid-template-columns: 1fr 1fr 1fr; 
+    }   
+}
+
+@media (max-width:600px) {
+    .event--lists {
+       
+        grid-template-columns: 1fr;
+        
+    }
+    .users--lists {
+        
+        grid-template-columns: 1fr 1fr;
+     
+    }
+    
 }

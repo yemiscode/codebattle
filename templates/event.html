@@ -1,8 +1,11 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div class="section" ><h1>{{event.name}}</h1></div>
+<div class="section">
+     <h1>{{event.name}}</h1>
+</div>
 
+{% if present_deadline == False %}
 <div class="section" id="event--action--wrapper">
      {% if Registered %} 
      <p class="text--success">You have already register for these event</p>
@@ -18,14 +21,21 @@
      <a class="btn btn--primary" href="{% url 'project_submission' event.id %}">Submit project</a>
      {% endif %}
 </div>
-
+{% else %}
+<p>Registration closed for these event</p>
+{% endif %}
 <div class="section"><p>{{event.description|linebreaks|urlize}}</p></div>
      <h3>Users</h3>
      <div class="users--lists">
 {% for user in event.participants.all %}
      <a href="{% url 'profile' user.id %}">
      <div class="wrapper--user">
-     <img class="user--avatar--sm" src="{{user.avatar.url}}"><h4>{{user.name}}</h4></div>
+     <img class="user--avatar--sm" src="{{user.avatar.url}}">
+     <h4>{{user.name}}</h4>
+     {% if user.bio %}
+     <h1>{{user.bio|truncatechars:50}}</h1> 
+     {% endif %}
+     </div>
      </a>
 {% endfor %}
 </div>

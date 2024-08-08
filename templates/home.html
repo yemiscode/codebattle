@@ -27,8 +27,18 @@
     {% for user in users %}
     <a href="{% url 'profile' user.id %}">
     <div class="wrapper--user">
-    <img class="user--avatar--sm" src="{{user.avatar.url}}"><h4>{{user.name}}</h4></div>
+    <img class="user--avatar--sm" src="{{user.avatar.url}}">
+    <h4>{{user.name}}</h4>
+    {% if user.bio %}
+    <h1>{{user.bio|truncatechars:50}}</h1> 
+    {% endif %}
+    </div>
     </a>
+    {% endfor %}
+</div>
+<div class="section paginator--wrapper">
+    {% for page in pages %}
+    <a class="btn btn--primary" href="?page={{page}}">{{page}}</a>
     {% endfor %}
 </div>
 </section>
